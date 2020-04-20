@@ -1,31 +1,38 @@
 # TODO
 
 functions/objects
-    - define function syntax & implement in parser.y
-    - implement function model in node/context
-    - define object syntax & implement in parser.y
-    - implement object model in node/context
-    - closures?
+
+- define function syntax & implement in parser.y
+- implement function model in node/context
+- define object syntax & implement in parser.y
+- implement object model in node/context
+- closures?
 
 loop implementation using sequence
-    - statement lists
-    - program counter
+
+- statement lists
+- program counter
 
 graphics output
-    - 2d plotting
-    - lines
-    - text
-    - graphics buffer
+
+- 2d plotting
+- lines
+- text
+- graphics buffer
 
 file i/o
-    - opening files 
-    - displaying graphics
+
+- opening files 
+- displaying graphics
 
 syntax error messages
-    - collate messages, remove duplicates, show at end of parse
-    - inspect error in yyerror and substitute better text for types - e.g. 'T_STRING'
+
+- collate messages, remove duplicates, show at end of parse
+- inspect error in yyerror and substitute better text for types - e.g. 'T_STRING'
 
 implement in silicon (FPGA)
+
+VSCODE syntax highlighting (TextMate grammar and Semantic Token Provider)
 
 ## BUGS
 
