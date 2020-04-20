@@ -56,6 +56,15 @@
 %token WHILE
 %token OUT
 
+%token OPERATOR
+
+%token SYMBOL
+%token BAD_SYMBOL
+%token INTEGER
+%token REAL
+%token BAD_REAL
+%token QSTRING
+
 %token GEQ
 %token LEQ
 %token EQ

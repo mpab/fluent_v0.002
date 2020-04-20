@@ -26,7 +26,19 @@ using tok = CMD::Parser::token_type;
 %option noyywrap
 %option c++
 
+DIGIT             [0-9]
+INTEGER           {DIGIT}+
+REAL_1            {DIGIT}+"f"
+REAL_2            {DIGIT}+\.?{DIGIT}+"f"?
+BAD_REAL_1        {DIGIT}+\.
+BAD_REAL_2        \.{DIGIT}+
+QSTRING           (\"(\\.|[^"])*\"|\'(\\.|[^'])*\')
+
+SYMBOL            [_a-zA-Z][_a-zA-Z0-9]*
+BAD_SYMBOL        [0-9][_a-zA-Z][_a-zA-Z0-9]
+
 %%
+
 %{          /** Code executed at the beginning of yylex **/
             yylval = lval;
 %}
@@ -42,39 +54,72 @@ using tok = CMD::Parser::token_type;
                yylval->build<std::string>(yytext);
                return tok::TEXT;
             }
-         
+
+[-()<>=+*/;{}.,^]   {
+                        yylval->build<std::string>(yytext);
+                        return tok::OPERATOR;
+                    }
+
+{SYMBOL}            { 
+                        yylval->build<std::string>(yytext);
+                        return tok::SYMBOL;
+                    }
+
+{BAD_SYMBOL}        { 
+                        yylval->build<std::string>(yytext);
+                        return tok::BAD_SYMBOL;
+                    }
+
+{INTEGER}           { 
+                        yylval->build<std::string>(yytext);
+                        return tok::INTEGER;
+                    }
+
+{REAL_1}            { 
+                        yylval->build<std::string>(yytext);
+                        return tok::REAL;
+                    }
+
+{REAL_2}            { 
+                        yylval->build<std::string>(yytext);
+                        return tok::REAL;
+                    }
+
+{BAD_REAL_1}        { 
+                        yylval->build<std::string>(yytext);
+                        return tok::BAD_REAL;
+                    }
+
+{BAD_REAL_2}        { 
+                        yylval->build<std::string>(yytext);
+                        return tok::BAD_REAL;
+                    }
+
+{QSTRING}           { 
+                        yylval->build<std::string>(yytext);
+                        return tok::QSTRING;
+                    }
+      
 "::abort\n" return tok::CON_ABORT;
-            
 "::quit\n"  return tok::CON_ABORT;
-            
 "::exit\n"  return tok::CON_ABORT;
 
 ">="        return tok::GEQ;
-
 "<="        return tok::LEQ;
-
 "=="        return tok::EQ;
-
 "!="        return tok::NEQ;
 
 "while"     return tok::WHILE;
-
 "if"        return tok::IF;
-
 "else"      return tok::ELSE;
-
 "elseif"    return tok::ELSEIF;
-
 "out"       return tok::OUT;
             
 "\/\/".*\n  return tok::COMMENT;
-
 "..."       return tok::ELLIPSIS;
 
 \n          return tok::NL;
-
 [[:space:]] return tok::SPC;
-            
 .           return tok::CHAR;
 
 %%

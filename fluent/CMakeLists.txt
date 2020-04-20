@@ -12,6 +12,9 @@ add_executable(fluent
     main.cpp
     command.cpp
     ../lexparse/driver.cpp
+    ../lexparse/driver.hpp
+    ../lexparse/lexeme.hpp
+    ../lexparse/scanner.hpp
     ../lexparse/lexer.l
     ../lexparse/parser.yy
     ../lexparse-build/lexer.cc
