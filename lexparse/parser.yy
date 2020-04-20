@@ -50,6 +50,22 @@
 
 %token <std::string> TEXT
 
+%token COMMENT
+%token ELLIPSIS 
+%token IF ELSEIF ELSE 
+%token WHILE
+%token OUT
+
+%token GEQ
+%token LEQ
+%token EQ
+%token NEQ
+
+%left GEQ LEQ EQ NEQ '>' '<'
+%left '+' '-'
+%left '*' '/'
+%left '^'
+
 %locations
 
 %%

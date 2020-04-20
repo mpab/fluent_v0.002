@@ -42,26 +42,39 @@ using tok = CMD::Parser::token_type;
                yylval->build<std::string>(yytext);
                return tok::TEXT;
             }
+         
+"::abort\n" return tok::CON_ABORT;
+            
+"::quit\n"  return tok::CON_ABORT;
+            
+"::exit\n"  return tok::CON_ABORT;
 
-\n          {
-               return tok::NL;
-            }
+">="        return tok::GEQ;
 
-"::abort\n" {
-               return tok::CON_ABORT;
-            }
-"::quit\n"  {
-               return tok::CON_ABORT;
-            }
-"::exit\n"  {
-               return tok::CON_ABORT;
-            }
+"<="        return tok::LEQ;
 
-[[:space:]] {
-               return tok::SPC;
-            }
+"=="        return tok::EQ;
 
-.           {
-               return tok::CHAR;
-            }
+"!="        return tok::NEQ;
+
+"while"     return tok::WHILE;
+
+"if"        return tok::IF;
+
+"else"      return tok::ELSE;
+
+"elseif"    return tok::ELSEIF;
+
+"out"       return tok::OUT;
+            
+"\/\/".*\n  return tok::COMMENT;
+
+"..."       return tok::ELLIPSIS;
+
+\n          return tok::NL;
+
+[[:space:]] return tok::SPC;
+            
+.           return tok::CHAR;
+
 %%
