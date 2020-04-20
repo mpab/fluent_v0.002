@@ -1,5 +1,5 @@
-TODO
-------------------------------------------------
+# TODO
+
 functions/objects
     - define function syntax & implement in parser.y
     - implement function model in node/context
@@ -25,11 +25,16 @@ syntax error messages
     - collate messages, remove duplicates, show at end of parse
     - inspect error in yyerror and substitute better text for types - e.g. 'T_STRING'
 
-BUGS
-------------------------------------------------
+implement in silicon (FPGA)
 
-DONE
-------------------------------------------------
+## BUGS
+
+## DONE V0.02
+
+Initial reimplementation using latest bison and flex and new command parser
+
+## DONE V0.01
+
 2017.10
 FIXED:
 parser.y
