@@ -1,0 +1,3 @@
+#!/bin/bash
+./scripts/generate-and-build lexparse $1
+./scripts/generate-and-build fluent $1
