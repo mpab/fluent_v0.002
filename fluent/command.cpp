@@ -1,5 +1,5 @@
 
-#include "..\lexparse\command.hpp"
+#include "../lexparse/command.hpp"
 #include "lexeme.hpp"
 #include <list>
 #include <string>
