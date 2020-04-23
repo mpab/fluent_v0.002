@@ -8,20 +8,29 @@ endif()
 
 cmake_minimum_required(VERSION 3.17)
 
-add_executable(fluent
-    main.cpp
-    command.cpp
+add_library(lexparse
     ../lexparse/driver.cpp
     ../lexparse/driver.hpp
     ../lexparse/lexeme.hpp
     ../lexparse/scanner.hpp
+    ../lexparse/command.hpp
     ../lexparse/lexer.l
     ../lexparse/parser.yy
     ../lexparse-build/lexer.cc
     ../lexparse-build/parser.cc
 )
 
+target_include_directories(lexparse PRIVATE . $ENV{BOOST_HOME} $ENV{FLEX_BISON_HOME} ../lexparse ../lexparse-build)
+
+add_executable(fluent
+    main.cpp
+    command.cpp
+    ../lexparse/command.hpp
+)
+
 target_include_directories(fluent PRIVATE . $ENV{BOOST_HOME} $ENV{FLEX_BISON_HOME} ../lexparse ../lexparse-build)
+
+target_link_libraries(fluent PRIVATE lexparse)
 
 set_property(TARGET fluent
              PROPERTY CXX_STANDARD 14)

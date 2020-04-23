@@ -1,5 +1,5 @@
 
-#include "../lexparse/command.hpp"
+#include "command.hpp"
 #include "lexeme.hpp"
 #include <list>
 #include <string>
@@ -62,8 +62,6 @@ namespace Command {
 
         auto il = l.begin();
         auto im = m.begin();
-
-        // int i = 0;
 
         while (il != l.end()) {
             if (il->type == lexeme::TOKEN && il->token != *im) {
