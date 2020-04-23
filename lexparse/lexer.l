@@ -113,6 +113,10 @@ BAD_SYMBOL        [0-9][_a-zA-Z][_a-zA-Z0-9]
 "if"        return tok::IF;
 "else"      return tok::ELSE;
 "elseif"    return tok::ELSEIF;
+"endif"     return tok::ENDIF;
+"do"        return tok::DO;
+"while"     return tok::WHILE;
+"wend"      return tok::WEND;
 "out"       return tok::OUT;
             
 "\/\/".*\n  return tok::COMMENT;

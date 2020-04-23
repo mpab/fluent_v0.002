@@ -1,6 +1,7 @@
 
 #include "command.hpp"
 #include "lexeme.hpp"
+#include "parser.hh"
 #include <list>
 #include <string>
 
@@ -13,6 +14,49 @@ namespace Command {
 
     string evaluate(list<CMD::lexeme>& lexemes)
     {
+        for (auto& it : lexemes) {
+            switch (it.TOKEN) {
+            case T::END:
+                return "end";
+                break;
+
+            case T::COMMENT:
+                return "comment";
+                break;
+
+            case T::IF:
+                return "if";
+                break;
+
+            case T::ELSE:
+                return "else";
+                break;
+
+            case T::ELSEIF:
+                return "else if";
+                break;
+
+            case T::ENDIF:
+                return "end if";
+                break;
+
+            case T::DO:
+                return "do";
+                break;
+
+            case T::WHILE:
+                return "while";
+                break;
+
+            case T::WEND:
+                return "wend";
+                break;
+
+            default:
+                return "%NYI%";
+                break;
+            }
+        }
         return string();
     }
 

@@ -52,8 +52,8 @@
 
 %token COMMENT
 %token ELLIPSIS 
-%token IF ELSEIF ELSE 
-%token WHILE
+%token IF ELSE ELSEIF ENDIF
+%token DO WHILE WEND
 %token OUT
 
 %token OPERATOR
